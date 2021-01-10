@@ -16,10 +16,18 @@ with open(csvpath) as csvfile:
     budget_data_header = next(budget_data)
     print(f"CSV Header: {budget_data_header}")
     # Calculate the number of months in the data set
+    #The net total amount of "Profit/Losses" over the entire period
+    # num_months will hold the number of months in the data set after running the for loop.
     num_months = 0
     mon_year = ""
+    sum_profits_losses = 0
+
     for row in budget_data:
         if row[0] != mon_year:
             num_months += 1
             mon_year = row[0]
+        profit_loss = int(row[1])
+        sum_profits_losses += profit_loss
+        
     print(num_months)
+    print(sum_profits_losses)
