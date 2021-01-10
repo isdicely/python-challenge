@@ -6,16 +6,20 @@ import os
 # This allows us to read and write tabular data in CSV format.
 import csv
 # Set path to retrieve csv file
-csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
+csvpath = os.path.join('Resources', 'budget_data.csv')
 
 # Test that path is correct and read file
 with open(csvpath) as csvfile:
     # CSV reader specifies delimiter and variable that holds contents
-    csvreader = csv.reader(csvfile)
-    print(csvreader)
-    # Read the header row first (skip this step if there is now header)
-    csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
-    # Read each row of data after the header
-    for row in csvreader:
-        print(row)
+    budget_data = csv.reader(csvfile)
+    # Read the header row first
+    budget_data_header = next(budget_data)
+    print(f"CSV Header: {budget_data_header}")
+    # Calculate the number of months in the data set
+    num_months = 0
+    mon_year = ""
+    for row in budget_data:
+        if row[0] != mon_year:
+            num_months += 1
+            mon_year = row[0]
+    print(num_months)
