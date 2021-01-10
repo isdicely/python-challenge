@@ -59,7 +59,8 @@ with open(csvpath) as csvfile:
             sum_delta_profits_losses += delta_profits_losses
         # Reset previos profit/losses variable
         previous_profit_loss_value = current_profit_loss_value
-        # Find the greatest profit and loss values
+        # Find the greatest profit and loss 
+        # Hold the date of these values
         if delta_profits_losses > greatest_profit_increase:
             greatest_profit_increase = delta_profits_losses
             date_grtst_profit_inc = mon_year
@@ -69,7 +70,7 @@ with open(csvpath) as csvfile:
     # Calculate the average of the changes in the profit/losses
     ave_delta_profits_losses = sum_delta_profits_losses/(num_months-1)
 
-        
+    # Print Analysis report  
     print(num_months)
     print(sum_profits_losses)
     print(ave_delta_profits_losses)
