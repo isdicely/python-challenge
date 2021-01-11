@@ -17,8 +17,9 @@ with open(csvpath) as csvfile:
     election_data = csv.reader(csvfile)
     # Read the header row first
     election_data_header = next(election_data)
-    print(f"CSV Header: {election_data_header}")
+    #print(f"CSV Header: {election_data_header}")
 
+    # This dictionary will hold the candidates names as the key and the values will be the total votes
     candidates_dict = {}
 
     # Iterate through all rows
@@ -28,28 +29,44 @@ with open(csvpath) as csvfile:
             candidates_dict[row[2]] = 1
         else:
             candidates_dict[row[2]] +=1
-    print(candidates_dict)        
+            
     # Calcuate total votes cast
     total_votes = sum(candidates_dict.values())
-    print(total_votes)
+    
     # make list of candidates
     candidates = list(candidates_dict.keys())
-    print(candidates)
+    
     # Percentage of votes for each candidate
     # Dictionary comprehension
         # Calculates vote percents as it iterates through the keys (candidates) and uses the values (total votes)
     vote_percents = {candidate: votes/total_votes*100 for candidate, votes in candidates_dict.items() }
-    print(vote_percents)
+    
     # Find winner (most votes cast)
     # Used operator module to use the itemgetter function
     # sorting by the values of candidates_dict, returning the candidate name
     election_winner = max(candidates_dict.items(),key = operator.itemgetter(1))[0]
-    print(election_winner)
-        
+
+    # Print the analysis summary        
     print("Election Results")
     print("----------------------------")
     print(f'Total Votes: {total_votes}')
+    # Iterate through the dictionaries to get the folowing values from the key(candidate names)
     print("----------------------------")
     for key, value in vote_percents.items():
         print(f'{key}: {value:0.3f}% ({candidates_dict[key]})')
+    print("----------------------------")
+    print(f'Winner: {election_winner}')
+    print("----------------------------")
 
+    # Write the analysis summary to a txt file
+    with open('Analysis/PyPoll_analysis.txt', mode = 'w') as PyPoll_analysis:
+        print("Election Results",file=PyPoll_analysis)
+        print("----------------------------",file=PyPoll_analysis)
+        print(f'Total Votes: {total_votes}',file=PyPoll_analysis)
+        # Iterate through the dictionaries to get the folowing values from the key(candidate names)
+        print("----------------------------",file=PyPoll_analysis)
+        for key, value in vote_percents.items():
+            print(f'{key}: {value:0.3f}% ({candidates_dict[key]})',file=PyPoll_analysis)
+        print("----------------------------",file=PyPoll_analysis)
+        print(f'Winner: {election_winner}',file=PyPoll_analysis)
+        print("----------------------------",file=PyPoll_analysis)
