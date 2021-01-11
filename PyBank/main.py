@@ -70,11 +70,21 @@ with open(csvpath) as csvfile:
     # Calculate the average of the changes in the profit/losses
     ave_delta_profits_losses = sum_delta_profits_losses/(num_months-1)
 
-    # Print Analysis report  
-    print(num_months)
-    print(sum_profits_losses)
-    print(ave_delta_profits_losses)
-    print(greatest_loss_decrease)
-    print(date_grtst_loss_dec)
-    print(greatest_profit_increase)
-    print(date_grtst_profit_inc)
+    # Print Analysis report
+    print("Financial Analysis")
+    print("-------------------------------------------------")
+    print(f'Total Months: {num_months}')
+    print(f'Total: ${sum_profits_losses}')
+    print(f'Average Change: ${ave_delta_profits_losses:0.2f}')
+    print(f'Greatest Increase in Profits: {date_grtst_profit_inc} (${greatest_profit_increase})')
+    print(f'Greatest Decrease in Profits: {date_grtst_loss_dec} (${greatest_loss_decrease})')
+
+    # Write analysis to text file
+    with open('Analysis/PyBank_analysis.txt', mode = 'w') as PyBank_analysis:
+        print("Financial Analysis",file=PyBank_analysis)
+        print("-------------------------------------------------",file=PyBank_analysis)
+        print(f'Total Months: {num_months}',file=PyBank_analysis)
+        print(f'Total: ${sum_profits_losses}',file=PyBank_analysis)
+        print(f'Average Change: ${ave_delta_profits_losses:0.2f}',file=PyBank_analysis)
+        print(f'Greatest Increase in Profits: {date_grtst_profit_inc} (${greatest_profit_increase})',file=PyBank_analysis)
+        print(f'Greatest Decrease in Profits: {date_grtst_loss_dec} (${greatest_loss_decrease})',file=PyBank_analysis)
