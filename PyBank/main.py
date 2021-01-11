@@ -14,7 +14,7 @@ with open(csvpath) as csvfile:
     budget_data = csv.reader(csvfile)
     # Read the header row first
     budget_data_header = next(budget_data)
-    print(f"CSV Header: {budget_data_header}")
+    #print(f"CSV Header: {budget_data_header}")
     # Calculate the number of months in the data set
     # The net total amount of "Profit/Losses" over the entire period
     # Calculate the changes in "Profit/Losses" over the entire period, 
