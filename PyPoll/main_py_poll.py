@@ -36,9 +36,13 @@ with open(csvpath) as csvfile:
     candidates = list(candidates_dict.keys())
     print(candidates)
     # Percentage of votes for each candidate
+    # Dictionary comprehension
+        # Calculates vote percents as it iterates through the keys (candidates) and uses the values (total votes)
     vote_percents = {candidate: votes/total_votes*100 for candidate, votes in candidates_dict.items() }
     print(vote_percents)
     # Find winner (most votes cast)
+    # Used operator module to use the itemgetter function
+    # sorting by the values of candidates_dict, returning the candidate name
     election_winner = max(candidates_dict.items(),key = operator.itemgetter(1))[0]
     print(election_winner)
         
