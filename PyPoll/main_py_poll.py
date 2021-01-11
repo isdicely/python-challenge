@@ -46,5 +46,10 @@ with open(csvpath) as csvfile:
     election_winner = max(candidates_dict.items(),key = operator.itemgetter(1))[0]
     print(election_winner)
         
-
+    print("Election Results")
+    print("----------------------------")
+    print(f'Total Votes: {total_votes}')
+    print("----------------------------")
+    for key, value in vote_percents.items():
+        print(f'{key}: {value:0.3f}% ({candidates_dict[key]})')
 
