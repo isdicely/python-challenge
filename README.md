@@ -10,27 +10,10 @@
 #     The greatest decrease in losses (date and amount) over the entire period.
 # The code will print this analysis to the terminal as well as write the same information into a text file.
 
-# The second data set are 
-
-
-
-
-In this challenge, you are tasked with helping a small, rural town modernize its vote counting process.
-
-
-You will be give a set of poll data called election_data.csv. The dataset is composed of three columns: Voter ID, County, and Candidate. Your task is to create a Python script that analyzes the votes and calculates each of the following:
-
-
-The total number of votes cast
-
-
-A complete list of candidates who received votes
-
-
-The percentage of votes each candidate won
-
-
-The total number of votes each candidate won
-
-
-The winner of the election based on popular vote.
+# The second data set are votes cast for a local county election. The python code called main_py_poll.py runs through this data and calculates the following:
+#     The total nunber of votes cast
+#     A complete list of candidates who received votes
+#     The percentage of votes each candidate won
+#     The total number of votes each candidate won
+#     The winner of the election based on popular vote.
+# The code will print this analysis to the terminal as well as write the same information into a text file.
